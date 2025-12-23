@@ -24,18 +24,69 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   # ============================================
   # Navigation
   # ============================================
-  go_router:
-    ^17.0.0 # Declarative routing for Flutter applications
+  go_router: ^17.0.0 # Declarative routing for Flutter applications
 
-
-    # ============================================
+  # ============================================
   # State Management
   # ============================================
   hooks_riverpod: ^3.0.3 # State management with Riverpod and Flutter hooks
   flutter_hooks: ^0.21.3+1 # Lifecycle hooks for functional components
+
+  # ============================================
+  # Database
+  # ============================================
+  drift: ^2.30.0
+  drift_flutter: ^0.2.8
+
+  # ============================================
+  # Storage
+  # ============================================
+
+  shared_preferences: ^2.5.3 # Persistent key-value storage
+  flutter_secure_storage: ^9.2.4 # Secure storage for sensitive data
+
+  # ============================================
+  # Networking
+  # ============================================
+  dio: ^5.9.0 # Powerful HTTP client for Dart/Flutter
+  retrofit: ^4.9.1 # Type-safe REST client generator
+  connectivity_plus: ^7.0.0 # Network connectivity status
+
+  # ============================================
+  # UI Components
+  # ============================================
+  flex_color_scheme: ^8.4.0 # Flexible color schemes for Material themes
+  responsive_framework: ^1.5.1 # Responsive UI framework
+  cached_network_image: ^3.4.1 # Image caching and loading
+  shimmer: ^3.0.0 # Loading shimmer effects
+  flutter_animate: ^4.5.2 # Easy animations for Flutter
+  gap: ^3.0.1 # Spacing widget for consistent gaps
+  cupertino_icons: ^1.0.8 # iOS-style icons
+  flutter_svg: ^2.1.0 # SVG support
+
+  # ============================================
+  # Utilities
+  # ============================================
+  fpdart: ^1.2.0 # Functional programming utilities
+  permission_handler: ^12.0.1 # Handle app permissions
+  envied: ^1.3.2 # Environment variable management
+  device_info_plus: ^11.3.4 # Device info
+  package_info_plus: ^8.3.0 # Package info
+  url_launcher: ^6.3.1 # URL launcher
+  path_provider: ^2.1.5 # Path utilities
+  collection: ^1.19.1 # Collection utilities
+  toastification: ^3.0.3 # Toast notifications
+  intl: ^0.20.2 # Internationalization
+  shamsi_date: ^1.1.1 # Jalali date support
+
+  # ============================================
+  # validating data in Flutter
+  # ============================================
+  acanthis: ^1.5.0 # Schema validation and serialization
 
   # ============================================
   # Logging
@@ -44,23 +95,52 @@ dependencies:
   talker_flutter: ^5.1.7 # Flutter integration for Talker
   talker_riverpod_logger: ^5.1.7 # Riverpod logger for Talker
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
+  # ============================================
+  # Code Generation Annotations
+  # ============================================
+  freezed_annotation: ^3.1.0 # Annotations for Freezed data classes
+  json_annotation: ^4.9.0 # Annotations for JSON serialization
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
+# ============================================
+  # Testing
+  # ============================================
+  mocktail: ^1.0.4 # Mocking library for Dart
+  faker: ^2.2.0 # Fake Data Generation
+  golden_toolkit: ^0.15.0 # Golden Tests (Screenshot comparison)
+  network_image_mock: ^2.1.1 # Network Image Mocking
+  # ============================================
+  # E2E
+  # ============================================
+  patrol: ^4.0.1
+  # ============================================
+  # Linting
+  # ============================================
+  custom_lint: ^0.8.1 # Custom lint rules
+  riverpod_lint: ^3.0.3 # Lints for Riverpod
+  flutter_lints: ^6.0.0 # Recommended lints for Flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^6.0.0
+  # ============================================
+  # Code Generation
+  # ============================================
+  retrofit_generator: ^10.2.1 # Generates Retrofit client code
+  flutter_gen_runner: ^5.12.0 # Generates asset classes
+  freezed: ^3.2.3 # Generates data classes
+  json_serializable: ^6.9.5 # Generates JSON serialization code
+  envied_generator: ^1.3.2 # Generates environment variable classes
+  drift_dev: ^2.30.0
+  build_runner: ^2.4.15 # Runs code generators
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+flutter_gen:
+  output: lib/core/gen/
+  line_length: 80
+  integrations:
+    flutter_svg: true
+    lottie: true
 
 # The following section is specific to Flutter packages.
 flutter:

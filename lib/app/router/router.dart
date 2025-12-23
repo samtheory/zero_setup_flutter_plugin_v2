@@ -2,7 +2,7 @@
 
 import 'package:app_test_plugin/features/ex_notifier/presentation/screen/normal_notifier_screen.dart';
 import 'package:app_test_plugin/features/home/presentation/screens/home_screen.dart';
-import 'package:app_test_plugin/features/testing/presentation/screens/root_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,7 +29,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     // },
     routes: [
       GoRoute(path: Routes.home, builder: (context, state) => const HomeScreen()),
-      
+
       // example of notifier screens
       GoRoute(path: Routes.normalNotifier, builder: (context, state) => const NormalNotifierScreen()),
     ],
