@@ -73,7 +73,7 @@ dependencies:
   # ============================================
   fpdart: ^1.2.0 # Functional programming utilities
   permission_handler: ^12.0.1 # Handle app permissions
-  envied: ^1.3.2 # Environment variable management
+  envied: ^1.3.2 # Environment variable management (temporarily disabled due to version conflict)
   device_info_plus: ^11.3.4 # Device info
   package_info_plus: ^8.3.0 # Package info
   url_launcher: ^6.3.1 # URL launcher
@@ -106,7 +106,7 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
-# ============================================
+  # ============================================
   # Testing
   # ============================================
   mocktail: ^1.0.4 # Mocking library for Dart
@@ -127,13 +127,17 @@ dev_dependencies:
   # ============================================
   # Code Generation
   # ============================================
-  retrofit_generator: ^10.2.1 # Generates Retrofit client code
+  retrofit_generator: 10.2.0 # Pinned - 10.2.1 has DartMappable bug
   flutter_gen_runner: ^5.12.0 # Generates asset classes
   freezed: ^3.2.3 # Generates data classes
   json_serializable: ^6.9.5 # Generates JSON serialization code
-  envied_generator: ^1.3.2 # Generates environment variable classes
+  # envied_generator: ^1.3.2 # Generates environment variable classes (temporarily disabled due to version conflict)
   drift_dev: ^2.30.0
   build_runner: ^2.4.15 # Runs code generators
+
+# Temporary overrides to fix version conflicts
+dependency_overrides:
+  analyzer: ^8.2.0
 
 flutter_gen:
   output: lib/core/gen/
