@@ -1,5 +1,7 @@
+import 'package:app_test_plugin/app/router/routes.dart';
 import 'package:app_test_plugin/core/logger/app_logger.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeScreen extends HookConsumerWidget {
@@ -9,16 +11,99 @@ class HomeScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(centerTitle: true, title: const Text('Home')),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            _Welcome(),
-
-            //custom ScrollView with sliverFillRemaining
-            
-          ],
-        ),
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: const Center(
+              child: Padding(padding: EdgeInsets.all(16.0), child: _Welcome()),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Text(
+                'Notifier State Controller',
+                style: Theme.of(
+                  context,
+                ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold, color: Colors.blue[800]),
+              ),
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            sliver: SliverGrid.count(
+              crossAxisCount: 3,
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0,
+              childAspectRatio: 0.9,
+              children: [
+                _GridItem(
+                  icon: Icons.dashboard,
+                  title: 'normal',
+                  color: Colors.blue,
+                  onTap: () {
+                    // context.goNamed(Routes.normalNotifier);
+                    context.push(Routes.normalNotifier);
+                    talker.good(Routes.normalNotifier);
+                  },
+                ),
+                _GridItem(
+                  icon: Icons.settings,
+                  title: 'Async',
+                  color: Colors.green,
+                  onTap: () => talker.good('Settings tapped'),
+                ),
+                _GridItem(
+                  icon: Icons.person,
+                  title: 'Family',
+                  color: Colors.orange,
+                  onTap: () => talker.good('Profile tapped'),
+                ),
+              ],
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Text(
+                'Quick Actions',
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            sliver: SliverGrid.count(
+              crossAxisCount: 3,
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0,
+              childAspectRatio: 0.9,
+              children: [
+                _GridItem(
+                  icon: Icons.notifications,
+                  title: 'Notifications',
+                  color: Colors.red,
+                  onTap: () => talker.good('Notifications tapped'),
+                ),
+                _GridItem(
+                  icon: Icons.search,
+                  title: 'Search',
+                  color: Colors.purple,
+                  onTap: () => talker.good('Search tapped'),
+                ),
+                _GridItem(
+                  icon: Icons.favorite,
+                  title: 'Favorites',
+                  color: Colors.pink,
+                  onTap: () => talker.good('Favorites tapped'),
+                ),
+              ],
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: const SizedBox(height: 80), // Space for FAB
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -48,6 +133,42 @@ class _Welcome extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
       ],
+    );
+  }
+}
+
+class _GridItem extends StatelessWidget {
+  const _GridItem({required this.icon, required this.title, required this.color, required this.onTap});
+
+  final IconData icon;
+  final String title;
+  final Color color;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 48, color: color),
+              const SizedBox(height: 8),
+              Text(
+                title,
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
