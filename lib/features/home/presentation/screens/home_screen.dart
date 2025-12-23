@@ -7,32 +7,16 @@ class HomeScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-   
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              // Navigate to settings (future implementation)
-            },
-          ),
-        ],
-      ),
+      appBar: AppBar(centerTitle: true, title: const Text('Home')),
       body: const Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Icon(Icons.home, size: 80, color: Colors.indigo),
-            SizedBox(height: 16),
-            Text('Welcome to the App!', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            SizedBox(height: 8),
-            Text(
-              'This is the home screen of your Flutter app.',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
-              textAlign: TextAlign.center,
-            ),
+            _Welcome(),
+
+            //custom ScrollView with sliverFillRemaining
+            
           ],
         ),
       ),
@@ -42,6 +26,28 @@ class HomeScreen extends HookConsumerWidget {
         },
         child: const Icon(Icons.add),
       ),
+    );
+  }
+}
+
+class _Welcome extends StatelessWidget {
+  const _Welcome();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        Icon(Icons.home, size: 80, color: Colors.indigo),
+        SizedBox(height: 10),
+        Text('Welcome to the App!', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+
+        SizedBox(height: 2),
+        Text(
+          'This is the home screen feature example.',
+          style: TextStyle(fontSize: 16, color: Colors.grey),
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

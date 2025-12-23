@@ -1,6 +1,7 @@
 /// Routes Named Constants
 abstract class Routes {
   // Auth
-  static const root = '/';
-  static const home = '/home';
+  
+  static const home = '/';
+  static const normalNotifier = '/normal_notifier';
 }

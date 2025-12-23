@@ -1,5 +1,6 @@
 // ⭐ (مغز Navigation)
 
+import 'package:app_test_plugin/features/ex_notifier/presentation/screen/normal_notifier_screen.dart';
 import 'package:app_test_plugin/features/home/presentation/screens/home_screen.dart';
 import 'package:app_test_plugin/features/testing/presentation/screens/root_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,18 +20,18 @@ final routerProvider = Provider<GoRouter>((ref) {
 
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: Routes.root,
+    initialLocation: Routes.home,
     debugLogDiagnostics: true, // برای دیباگ - توی Production غیرفعال کن
-
     // 🛡️ Auth Guard (uncomment when auth is implemented)
     // redirect: (context, state) {
     //   // Auth logic here
     //   return null;
     // },
     routes: [
-      // 🔐 Login Route (بدون Shell)
-      GoRoute(path: Routes.root, builder: (context, state) => const RootScreen()),
       GoRoute(path: Routes.home, builder: (context, state) => const HomeScreen()),
+      
+      // example of notifier screens
+      GoRoute(path: Routes.normalNotifier, builder: (context, state) => const NormalNotifierScreen()),
     ],
 
     // 404 Page
@@ -45,7 +46,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             const SizedBox(height: 8),
             Text('مسیر: ${state.matchedLocation}'),
             const SizedBox(height: 24),
-            ElevatedButton(onPressed: () => context.go(Routes.root), child: const Text('برگرد به خانه')),
+            ElevatedButton(onPressed: () => context.go(Routes.home), child: const Text('برگرد به خانه')),
           ],
         ),
       ),
