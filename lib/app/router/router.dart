@@ -1,5 +1,6 @@
 // ⭐ (مغز Navigation)
 
+import 'package:app_test_plugin/features/home/presentation/screens/home_screen.dart';
 import 'package:app_test_plugin/features/testing/presentation/screens/root_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -20,28 +21,16 @@ final routerProvider = Provider<GoRouter>((ref) {
     navigatorKey: _rootNavigatorKey,
     initialLocation: Routes.root,
     debugLogDiagnostics: true, // برای دیباگ - توی Production غیرفعال کن
-    // 🛡️ Auth Guard
-    redirect: (context, state) {
-      // final isLoggedIn = authState.isAuthenticated;
-      // final isLoggingIn = state.matchedLocation == Routes.login;
 
-      // اگه لاگین نیست و داره میره جایی غیر از Login → برو Login
-      // if (!isLoggedIn && !isLoggingIn) {
-      //   return Routes.login;
-      // }
-
-      // اگه لاگینه و داره میره Login → برو Home
-      // if (isLoggedIn && isLoggingIn) {
-      //   return Routes.home;
-      // }
-
-      // در غیر این صورت، اجازه بده
-      return null;
-    },
-
+    // 🛡️ Auth Guard (uncomment when auth is implemented)
+    // redirect: (context, state) {
+    //   // Auth logic here
+    //   return null;
+    // },
     routes: [
       // 🔐 Login Route (بدون Shell)
       GoRoute(path: Routes.root, builder: (context, state) => const RootScreen()),
+      GoRoute(path: Routes.home, builder: (context, state) => const HomeScreen()),
     ],
 
     // 404 Page

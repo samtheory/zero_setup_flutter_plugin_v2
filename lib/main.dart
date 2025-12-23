@@ -6,19 +6,5 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // final preferencesService = PreferencesService();
-  // await preferencesService.init();
-
-  // final secureStorage = SecureStorageService();
-
-  runApp(
-    ProviderScope(
-      observers: [talkerRiverpodObserver],
-      overrides: [
-        // preferencesServiceProvider.overrideWithValue(preferencesService),
-        // secureStorageProvider.overrideWithValue(secureStorage),
-      ],
-      child: const App(),
-    ),
-  );
+  runApp(ProviderScope(observers: [talkerRiverpodObserver], child: const App()));
 }

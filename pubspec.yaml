@@ -1,5 +1,5 @@
 name: app_test_plugin
-description: "A new Flutter project."
+description: "A modern Flutter application with feature-based architecture, Riverpod state management, and comprehensive logging."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
@@ -42,14 +42,13 @@ dependencies:
   hooks_riverpod: ^3.0.3 # State management with Riverpod and Flutter hooks
   flutter_hooks: ^0.21.3+1 # Lifecycle hooks for functional components
 
-
   # ============================================
   # Logging
   # ============================================
   talker_dio_logger: ^5.1.7 # Dio logger for Talker
   talker_flutter: ^5.1.7 # Flutter integration for Talker
   talker_riverpod_logger: ^5.1.7 # Riverpod logger for Talker
-  
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
