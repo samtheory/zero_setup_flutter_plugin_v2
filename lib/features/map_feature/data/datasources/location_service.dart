@@ -10,10 +10,7 @@ class LocationService {
   /// Get current device location
   Future<UserLocationEntity> getCurrentLocation() async {
     final position = await Geolocator.getCurrentPosition(
-      locationSettings: const LocationSettings(
-        accuracy: LocationAccuracy.high,
-        distanceFilter: 10,
-      ),
+      locationSettings: const LocationSettings(accuracy: LocationAccuracy.high, distanceFilter: 10),
     );
 
     return UserLocationEntity(
@@ -30,19 +27,18 @@ class LocationService {
   /// Stream of location updates
   Stream<UserLocationEntity> getLocationStream() {
     return Geolocator.getPositionStream(
-      locationSettings: const LocationSettings(
-        accuracy: LocationAccuracy.high,
-        distanceFilter: 10,
+      locationSettings: const LocationSettings(accuracy: LocationAccuracy.high, distanceFilter: 10),
+    ).map(
+      (position) => UserLocationEntity(
+        latitude: position.latitude,
+        longitude: position.longitude,
+        accuracy: position.accuracy,
+        altitude: position.altitude,
+        heading: position.heading,
+        speed: position.speed,
+        timestamp: position.timestamp,
       ),
-    ).map((position) => UserLocationEntity(
-          latitude: position.latitude,
-          longitude: position.longitude,
-          accuracy: position.accuracy,
-          altitude: position.altitude,
-          heading: position.heading,
-          speed: position.speed,
-          timestamp: position.timestamp,
-        ));
+    );
   }
 
   /// Check if location services are enabled

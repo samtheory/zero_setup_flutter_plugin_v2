@@ -9,12 +9,7 @@ class PoiInfoCard extends StatelessWidget {
   final VoidCallback? onClose;
   final VoidCallback? onNavigate;
 
-  const PoiInfoCard({
-    super.key,
-    required this.poi,
-    this.onClose,
-    this.onNavigate,
-  });
+  const PoiInfoCard({super.key, required this.poi, this.onClose, this.onNavigate});
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +18,7 @@ class PoiInfoCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 10, offset: const Offset(0, -2))],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -40,10 +29,7 @@ class PoiInfoCard extends StatelessWidget {
             child: Container(
               width: 40,
               height: 4,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(2),
-              ),
+              decoration: BoxDecoration(color: Colors.grey[300], borderRadius: BorderRadius.circular(2)),
             ),
           ),
           const SizedBox(height: 16),
@@ -57,10 +43,7 @@ class PoiInfoCard extends StatelessWidget {
                   color: _getCategoryColor(poi.category).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Text(
-                  poi.category.icon,
-                  style: const TextStyle(fontSize: 28),
-                ),
+                child: Text(poi.category.icon, style: const TextStyle(fontSize: 28)),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -69,16 +52,11 @@ class PoiInfoCard extends StatelessWidget {
                   children: [
                     Text(
                       poi.name,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 4),
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 2,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                       decoration: BoxDecoration(
                         color: _getCategoryColor(poi.category).withOpacity(0.1),
                         borderRadius: BorderRadius.circular(4),
@@ -95,22 +73,14 @@ class PoiInfoCard extends StatelessWidget {
                   ],
                 ),
               ),
-              IconButton(
-                onPressed: onClose,
-                icon: const Icon(Icons.close),
-              ),
+              IconButton(onPressed: onClose, icon: const Icon(Icons.close)),
             ],
           ),
 
           // Description
           if (poi.description != null) ...[
             const SizedBox(height: 16),
-            Text(
-              poi.description!,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey[700],
-                  ),
-            ),
+            Text(poi.description!, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey[700])),
           ],
 
           // Coordinates
@@ -121,10 +91,7 @@ class PoiInfoCard extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 '${poi.latitude.toStringAsFixed(4)}, ${poi.longitude.toStringAsFixed(4)}',
-                style: TextStyle(
-                  color: Colors.grey[600],
-                  fontSize: 12,
-                ),
+                style: TextStyle(color: Colors.grey[600], fontSize: 12),
               ),
             ],
           ),
@@ -137,9 +104,7 @@ class PoiInfoCard extends StatelessWidget {
                 child: OutlinedButton.icon(
                   onPressed: () {
                     // Share functionality
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Share ${poi.name}')),
-                    );
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Share ${poi.name}')));
                   },
                   icon: const Icon(Icons.share),
                   label: const Text('Share'),

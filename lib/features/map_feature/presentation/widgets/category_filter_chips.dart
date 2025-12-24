@@ -9,12 +9,7 @@ class CategoryFilterChips extends StatelessWidget {
   final Function(PoiCategory) onToggle;
   final VoidCallback? onClearAll;
 
-  const CategoryFilterChips({
-    super.key,
-    required this.activeFilters,
-    required this.onToggle,
-    this.onClearAll,
-  });
+  const CategoryFilterChips({super.key, required this.activeFilters, required this.onToggle, this.onClearAll});
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +31,18 @@ class CategoryFilterChips extends StatelessWidget {
               ),
             ),
           // Category chips
-          ...PoiCategory.values.map((category) => Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: FilterChip(
-                  label: Text('${category.icon} ${category.displayName}'),
-                  selected: activeFilters.contains(category),
-                  onSelected: (_) => onToggle(category),
-                  selectedColor: _getCategoryColor(category).withOpacity(0.2),
-                  checkmarkColor: _getCategoryColor(category),
-                ),
-              )),
+          ...PoiCategory.values.map(
+            (category) => Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: FilterChip(
+                label: Text('${category.icon} ${category.displayName}'),
+                selected: activeFilters.contains(category),
+                onSelected: (_) => onToggle(category),
+                selectedColor: _getCategoryColor(category).withOpacity(0.2),
+                checkmarkColor: _getCategoryColor(category),
+              ),
+            ),
+          ),
         ],
       ),
     );

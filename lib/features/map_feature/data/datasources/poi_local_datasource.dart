@@ -105,11 +105,7 @@ class PoiLocalDatasource {
     const distance = Distance();
 
     return _pois.where((poi) {
-      final distanceToCenter = distance.as(
-        LengthUnit.Meter,
-        center,
-        poi.latLng,
-      );
+      final distanceToCenter = distance.as(LengthUnit.Meter, center, poi.latLng);
       return distanceToCenter <= radiusMeters;
     }).toList();
   }

@@ -26,32 +26,29 @@ abstract class PoiModel with _$PoiModel {
 
   /// Convert to domain entity
   PoiEntity toEntity() => PoiEntity(
-        id: id,
-        name: name,
-        description: description,
-        latitude: latitude,
-        longitude: longitude,
-        category: _parseCategory(category),
-        imageUrl: imageUrl,
-        metadata: metadata,
-      );
+    id: id,
+    name: name,
+    description: description,
+    latitude: latitude,
+    longitude: longitude,
+    category: _parseCategory(category),
+    imageUrl: imageUrl,
+    metadata: metadata,
+  );
 
   /// Create from domain entity
   factory PoiModel.fromEntity(PoiEntity entity) => PoiModel(
-        id: entity.id,
-        name: entity.name,
-        description: entity.description,
-        latitude: entity.latitude,
-        longitude: entity.longitude,
-        category: entity.category.name,
-        imageUrl: entity.imageUrl,
-        metadata: entity.metadata,
-      );
+    id: entity.id,
+    name: entity.name,
+    description: entity.description,
+    latitude: entity.latitude,
+    longitude: entity.longitude,
+    category: entity.category.name,
+    imageUrl: entity.imageUrl,
+    metadata: entity.metadata,
+  );
 
   static PoiCategory _parseCategory(String category) {
-    return PoiCategory.values.firstWhere(
-      (e) => e.name == category,
-      orElse: () => PoiCategory.general,
-    );
+    return PoiCategory.values.firstWhere((e) => e.name == category, orElse: () => PoiCategory.general);
   }
 }

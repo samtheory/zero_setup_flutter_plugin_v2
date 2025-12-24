@@ -9,12 +9,7 @@ class PoiMarker extends StatelessWidget {
   final bool isSelected;
   final VoidCallback? onTap;
 
-  const PoiMarker({
-    super.key,
-    required this.poi,
-    this.isSelected = false,
-    this.onTap,
-  });
+  const PoiMarker({super.key, required this.poi, this.isSelected = false, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -27,21 +22,11 @@ class PoiMarker extends StatelessWidget {
           color: isSelected ? _getCategoryColor(poi.category) : Colors.white,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              blurRadius: isSelected ? 8 : 4,
-              offset: const Offset(0, 2),
-            ),
+            BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: isSelected ? 8 : 4, offset: const Offset(0, 2)),
           ],
-          border: Border.all(
-            color: _getCategoryColor(poi.category),
-            width: 2,
-          ),
+          border: Border.all(color: _getCategoryColor(poi.category), width: 2),
         ),
-        child: Text(
-          poi.category.icon,
-          style: TextStyle(fontSize: isSelected ? 24 : 20),
-        ),
+        child: Text(poi.category.icon, style: TextStyle(fontSize: isSelected ? 24 : 20)),
       ),
     );
   }
@@ -89,19 +74,13 @@ class UserLocationMarker extends StatelessWidget {
           Container(
             width: accuracy! / 2,
             height: accuracy! / 2,
-            decoration: BoxDecoration(
-              color: Colors.blue.withOpacity(0.15),
-              shape: BoxShape.circle,
-            ),
+            decoration: BoxDecoration(color: Colors.blue.withOpacity(0.15), shape: BoxShape.circle),
           ),
         // Outer pulse ring
         Container(
           width: 40,
           height: 40,
-          decoration: BoxDecoration(
-            color: Colors.blue.withOpacity(0.2),
-            shape: BoxShape.circle,
-          ),
+          decoration: BoxDecoration(color: Colors.blue.withOpacity(0.2), shape: BoxShape.circle),
         ),
         // Inner dot
         Container(
@@ -111,12 +90,7 @@ class UserLocationMarker extends StatelessWidget {
             color: Colors.blue,
             shape: BoxShape.circle,
             border: Border.all(color: Colors.white, width: 3),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.blue.withOpacity(0.4),
-                blurRadius: 8,
-              ),
-            ],
+            boxShadow: [BoxShadow(color: Colors.blue.withOpacity(0.4), blurRadius: 8)],
           ),
         ),
       ],

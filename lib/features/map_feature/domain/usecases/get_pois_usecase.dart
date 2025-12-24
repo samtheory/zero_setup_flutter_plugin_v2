@@ -28,10 +28,7 @@ class GetPoisInRadiusUseCase {
 
   GetPoisInRadiusUseCase(this._repository);
 
-  Future<List<PoiEntity>> call({
-    required LatLng center,
-    required double radiusMeters,
-  }) =>
+  Future<List<PoiEntity>> call({required LatLng center, required double radiusMeters}) =>
       _repository.getPoisInRadius(center, radiusMeters);
 }
 
@@ -41,8 +38,7 @@ class GetPoisByCategoryUseCase {
 
   GetPoisByCategoryUseCase(this._repository);
 
-  Future<List<PoiEntity>> call(PoiCategory category) =>
-      _repository.getPoisByCategory(category);
+  Future<List<PoiEntity>> call(PoiCategory category) => _repository.getPoisByCategory(category);
 }
 
 /// Search POIs Use Case

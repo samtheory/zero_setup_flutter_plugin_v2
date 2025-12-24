@@ -42,10 +42,4 @@ abstract class MapRepository {
 }
 
 /// Location permission status
-enum LocationPermissionStatus {
-  granted,
-  denied,
-  deniedForever,
-  restricted,
-  unknown,
-}
+enum LocationPermissionStatus { granted, denied, deniedForever, restricted, unknown }

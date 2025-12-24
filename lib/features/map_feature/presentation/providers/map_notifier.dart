@@ -105,31 +105,15 @@ class MapNotifier extends Notifier<MapState> {
     try {
       final useCase = ref.read(getCurrentLocationUseCaseProvider);
       final location = await useCase();
-      state = state.copyWith(
-        userLocation: location,
-        isLoadingLocation: false,
-        mapCenter: location.latLng,
-      );
+      state = state.copyWith(userLocation: location, isLoadingLocation: false, mapCenter: location.latLng);
     } on LocationServiceDisabledException catch (e) {
-      state = state.copyWith(
-        isLoadingLocation: false,
-        locationError: e.toString(),
-      );
+      state = state.copyWith(isLoadingLocation: false, locationError: e.toString());
     } on LocationPermissionDeniedException catch (e) {
-      state = state.copyWith(
-        isLoadingLocation: false,
-        locationError: e.toString(),
-      );
+      state = state.copyWith(isLoadingLocation: false, locationError: e.toString());
     } on LocationPermissionDeniedForeverException catch (e) {
-      state = state.copyWith(
-        isLoadingLocation: false,
-        locationError: e.toString(),
-      );
+      state = state.copyWith(isLoadingLocation: false, locationError: e.toString());
     } catch (e) {
-      state = state.copyWith(
-        isLoadingLocation: false,
-        locationError: 'Failed to get location: $e',
-      );
+      state = state.copyWith(isLoadingLocation: false, locationError: 'Failed to get location: $e');
     }
   }
 
@@ -140,15 +124,9 @@ class MapNotifier extends Notifier<MapState> {
     try {
       final useCase = ref.read(getAllPoisUseCaseProvider);
       final pois = await useCase();
-      state = state.copyWith(
-        pois: pois,
-        isLoadingPois: false,
-      );
+      state = state.copyWith(pois: pois, isLoadingPois: false);
     } catch (e) {
-      state = state.copyWith(
-        isLoadingPois: false,
-        poisError: 'Failed to load POIs: $e',
-      );
+      state = state.copyWith(isLoadingPois: false, poisError: 'Failed to load POIs: $e');
     }
   }
 
@@ -160,28 +138,16 @@ class MapNotifier extends Notifier<MapState> {
 
     try {
       final useCase = ref.read(getPoisInRadiusUseCaseProvider);
-      final pois = await useCase(
-        center: state.userLocation!.latLng,
-        radiusMeters: radiusMeters,
-      );
-      state = state.copyWith(
-        pois: pois,
-        isLoadingPois: false,
-      );
+      final pois = await useCase(center: state.userLocation!.latLng, radiusMeters: radiusMeters);
+      state = state.copyWith(pois: pois, isLoadingPois: false);
     } catch (e) {
-      state = state.copyWith(
-        isLoadingPois: false,
-        poisError: 'Failed to load nearby POIs: $e',
-      );
+      state = state.copyWith(isLoadingPois: false, poisError: 'Failed to load nearby POIs: $e');
     }
   }
 
   /// Select a POI
   void selectPoi(PoiEntity poi) {
-    state = state.copyWith(
-      selectedPoi: poi,
-      mapCenter: poi.latLng,
-    );
+    state = state.copyWith(selectedPoi: poi, mapCenter: poi.latLng);
   }
 
   /// Clear selected POI

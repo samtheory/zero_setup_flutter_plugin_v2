@@ -32,6 +32,5 @@ class UserLocationEntity {
   bool get isMoving => speed != null && speed! > 0.5;
 
   @override
-  String toString() =>
-      'UserLocation(lat: $latitude, lng: $longitude, accuracy: $accuracy)';
+  String toString() => 'UserLocation(lat: $latitude, lng: $longitude, accuracy: $accuracy)';
 }
