@@ -2,6 +2,10 @@
 
 import 'package:app_test_plugin/features/ex_notifier/presentation/screen/normal_notifier_screen.dart';
 import 'package:app_test_plugin/features/home/presentation/screens/home_screen.dart';
+import 'package:app_test_plugin/features/user_management/presentation/screens/user_profile_screen.dart';
+import 'package:app_test_plugin/features/user_management/presentation/screens/user_edit_screen.dart';
+import 'package:app_test_plugin/features/user_management/presentation/screens/wallet_detail_screen.dart';
+import 'package:app_test_plugin/features/map_feature/presentation/screens/map_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -32,6 +36,25 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // example of notifier screens
       GoRoute(path: Routes.normalNotifier, builder: (context, state) => const NormalNotifierScreen()),
+      GoRoute(path: Routes.mapScreen, builder: (context, state) => const MapScreen()),
+
+      // User Management Routes
+      GoRoute(path: Routes.userProfile, builder: (context, state) => const UserProfileScreen()),
+      GoRoute(path: Routes.userEdit, builder: (context, state) => const UserEditScreen()),
+      GoRoute(
+        path: '${Routes.walletDetail}/:walletId',
+        builder: (context, state) {
+          final walletId = int.tryParse(state.pathParameters['walletId'] ?? '');
+          if (walletId == null) {
+            // Handle invalid walletId - redirect to user profile
+            return const UserProfileScreen();
+          }
+          return WalletDetailScreen(walletId: walletId);
+        },
+      ),
+
+      // Map Feature Routes
+      GoRoute(path: Routes.map, builder: (context, state) => const MapScreen()),
     ],
 
     // 404 Page

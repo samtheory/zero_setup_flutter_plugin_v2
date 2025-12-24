@@ -51,7 +51,10 @@ class HomeScreen extends HookConsumerWidget {
                   icon: Icons.settings,
                   title: 'Async',
                   color: Colors.green,
-                  onTap: () => talker.good('Settings tapped'),
+                  onTap: () {
+                    talker.good('Settings tapped');
+                    context.push(Routes.userProfile);
+                  },
                 ),
                 _GridItem(
                   icon: Icons.person,
@@ -66,7 +69,7 @@ class HomeScreen extends HookConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Text(
-                'Quick Actions',
+                'Plugin Features',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
               ),
             ),
@@ -80,10 +83,13 @@ class HomeScreen extends HookConsumerWidget {
               childAspectRatio: 0.9,
               children: [
                 _GridItem(
-                  icon: Icons.notifications,
-                  title: 'Notifications',
+                  icon: Icons.map,
+                  title: 'Map',
                   color: Colors.red,
-                  onTap: () => talker.good('Notifications tapped'),
+                  onTap: () {
+                    context.push(Routes.mapScreen);
+                    talker.good('Map tapped');
+                  },
                 ),
                 _GridItem(
                   icon: Icons.search,
