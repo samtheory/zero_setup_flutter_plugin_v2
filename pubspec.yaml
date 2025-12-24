@@ -14,7 +14,7 @@ scripts:
   clean: dart run build_runner clean
 
 environment:
-  sdk: ^3.10.4
+  sdk:  ^3.10.4
 
 # To automatically upgrade your package dependencies to the latest versions
 # consider running `flutter pub upgrade --major-versions`. Alternatively,
